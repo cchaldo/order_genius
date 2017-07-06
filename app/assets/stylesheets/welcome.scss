@@ -1,0 +1,33 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body.index {
+  align-content: center;
+  background-color: black;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+
+}
+
+div.hat{
+  margin: auto;
+  width: 50%;
+}
+
+img.hat {
+  align-content: center;
+  width: 600px;
+  height: 600px;
+}
+
+#console {
+  //padding: 150px 200px 200px 10px;
+  color: rgba(50,191,14,0.63);
+  font: 32px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  //width: 600px;
+  //height: 450px;
+
+}

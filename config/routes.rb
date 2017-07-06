@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
   resources :orders
   resources :tags
   resources :business_models
