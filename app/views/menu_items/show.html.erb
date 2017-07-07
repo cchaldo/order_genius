@@ -7,7 +7,7 @@
 
 <p>
   <strong>Price:</strong>
-  $<%= '%.2f' % @menu_item.price %>
+  <%= number_to_currency(@menu_item.price, precision: 2) %>
 </p>
 
 <p>
