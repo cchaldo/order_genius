@@ -3,15 +3,24 @@ class OrdersController < ApplicationController
 
 
   def add_item
+    if !session[:order].present?
+      redirect_to new_order_path, item: params[:menu_item_id]
+      return
+    end
     menu_item = MenuItem.find(params[:menu_item_id])
     order = Order.find(params[:order_id])
 
     order.menu_items << menu_item
-
-    redirect_to restaurant_menu_items_path(menu_item.restaurant)
+    redirect_to restaurant_menu_items_path(menu_item.restaurant), notice: "#{menu_item.name} added to your order!" 
   end
 
-
+  def delete_item
+    menu_item = OrderMenuItem.find(params[:menu_item_id])
+    order = Order.find(params[:order_id])
+    menu_item.destroy
+    # order.order_menu_items.delete(menu_item)
+    redirect_to order_path(order.id)
+  end
 
   # GET /orders
   # GET /orders.json
@@ -40,6 +49,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        session[:order] = @order
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

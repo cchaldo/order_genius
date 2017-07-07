@@ -14,10 +14,11 @@
   </thead>
 
   <tbody>
-    <% @order.menu_items.each do |item| %>
+    <% @order.order_menu_items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
-        <td>$<%= '%.2f' % item.price %></td>
+        <td><%= item.menu_item.name %></td>
+        <td>$<%= '%.2f' % item.menu_item.price %></td>
+        <td><%= link_to 'Remove', delete_menu_item_path(order_id: @order.id, menu_item_id: item.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
