@@ -15,7 +15,7 @@
     <% @menu_items.each do |menu_item| %>
       <tr>
         <td><%= link_to menu_item.name, add_menu_item_path(order_id:1, menu_item_id:menu_item.id), method: :post %></td>
-        <td>$<%= '%.2f' % menu_item.price %></td>
+        <td><%= number_to_currency(menu_item.price, precision: 2) %></td>
         <td><%= menu_item.restaurant %></td>
         <td><%= link_to 'Show', menu_item %></td>
         <td><%= link_to 'Edit', edit_menu_item_path(menu_item) %></td>

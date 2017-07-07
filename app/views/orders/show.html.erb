@@ -17,7 +17,7 @@
     <% @order.menu_items.each do |item| %>
       <tr>
         <td><%= item.name %></td>
-        <td>$<%= '%.2f' % item.price %></td>
+        <td><%= number_to_currency(item.price, precision: 2) %></td>
       </tr>
     <% end %>
   </tbody>
