@@ -6,6 +6,7 @@ class MenuItemsController < ApplicationController
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
     @menu_items = @restaurant.menu_items
+    @order = session[:order]
   end
 
   # GET /menu_items/1
